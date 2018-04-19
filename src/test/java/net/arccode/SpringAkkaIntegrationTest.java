@@ -76,7 +76,7 @@ public class SpringAkkaIntegrationTest extends AbstractJUnit4SpringContextTests 
         String path = ConfigFactory.defaultApplication().getString("remote.actor" +
                 ".selectLocationsByParentCode");
 
-        client.tell("tella", null);
+        client.tell("tell", null);
 
         Thread.sleep(1000);
     }
