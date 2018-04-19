@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.arccode</groupId>
+    <artifactId>akka-remote-client-java</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>akka-remote-client-java</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.locales>zh_CN</project.build.locales>
+        <project.build.jdk>1.8</project.build.jdk>
+
+        <!-- 依赖包版本 -->
+        <spring.versin>1.4.1.RELEASE</spring.versin>
+        <akka.version>2.5.3</akka.version>
+        <chill.version>0.9.2</chill.version>
+        <rest.api.protocol.version>0.0.2</rest.api.protocol.version>
+    </properties>
+
+    <!--引入Spring Boot的parent模块-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+    </parent>
+
+
+    <dependencies>
+        <!--引入Spring Boot 的web依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--引入Spring Boot 的单元测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 单元测试 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- akka -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.12</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+
+        <!-- akka remote -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-remote_2.12</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+
+        <!-- 序列化 -->
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>chill-akka_2.12</artifactId>
+            <version>${chill.version}</version>
+        </dependency>
+
+        <!-- 协议包 -->
+        <dependency>
+            <groupId>net.arccode</groupId>
+            <artifactId>rest-api-protocol</artifactId>
+            <version>${rest.api.protocol.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 定义复制资源文件时使用的环境 -->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+            </properties>
+        </profile>
+
+    </profiles>
+
+
+</project>
