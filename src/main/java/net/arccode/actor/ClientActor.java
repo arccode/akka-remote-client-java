@@ -3,6 +3,7 @@ package net.arccode.actor;
 import akka.actor.UntypedActor;
 import com.typesafe.config.ConfigFactory;
 import net.arccode.protocol.remote.LocationProtocol;
+import net.arccode.protocol.remote.UserProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -60,6 +61,13 @@ public class ClientActor extends UntypedActor {
                 log.info("{}", item);
             }
 
+        } else if (message instanceof UserProtocol.AddUserMsg) {
+            // 新增用户响应
+            log.info("接收到[{}]指令(响应): {}, 发送方 - {}, 接收方 - {}",
+                    "新增用户",
+                    message,
+                    getSender().path(),
+                    getSelf().path());
         } else {
             unhandled(message);
         }

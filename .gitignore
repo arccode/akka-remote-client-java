@@ -5,7 +5,6 @@
 target/*
 project/target/*
 project/project/*
-src/main/scala/models/NewYear.scala
 logs/*
 build/*
 logs/*

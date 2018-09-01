@@ -6,7 +6,7 @@
 
     <groupId>net.arccode</groupId>
     <artifactId>akka-remote-client-java</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
     <name>akka-remote-client-java</name>
 
@@ -19,7 +19,7 @@
         <spring.versin>1.4.1.RELEASE</spring.versin>
         <akka.version>2.5.3</akka.version>
         <chill.version>0.9.2</chill.version>
-        <rest.api.protocol.version>0.0.2</rest.api.protocol.version>
+        <rest.api.protocol.version>0.0.3-SNAPSHOT</rest.api.protocol.version>
     </properties>
 
     <!--引入Spring Boot的parent模块-->
@@ -78,6 +78,20 @@
             <artifactId>rest-api-protocol</artifactId>
             <version>${rest.api.protocol.version}</version>
         </dependency>
+
+        <!-- gyenno分布式服务基础协议包-->
+        <dependency>
+            <groupId>com.gyenno</groupId>
+            <artifactId>gyenno-service-module-base-protocol</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+        <!-- gyenno分布式服务用户中心协议包-->
+        <dependency>
+            <groupId>com.gyenno</groupId>
+            <artifactId>gyenno-service-module-user-protocol</artifactId>
+            <version>5.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <!-- 定义复制资源文件时使用的环境 -->
@@ -100,6 +114,21 @@
         </profile>
 
     </profiles>
+
+    <!-- nexus仓库 -->
+    <repositories>
+        <repository>
+            <id>maven-central</id>
+            <name>maven-central</name>
+            <url>http://nexus.gyenno.com/repository/gyenno-central/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 
 
 </project>
