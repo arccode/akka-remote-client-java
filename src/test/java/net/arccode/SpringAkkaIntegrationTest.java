@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import scala.concurrent.Await;
 import scala.concurrent.Future;
 import scala.concurrent.duration.FiniteDuration;
+import scala.remote;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -133,10 +134,8 @@ public class SpringAkkaIntegrationTest extends AbstractJUnit4SpringContextTests 
     @Test
     public void queryUser() throws Exception {
 
-        String path = "akka.tcp://gyenno-service-module-user@userakkadev.gyenno" +
-                ".com:10001/user/queryUser";
-//        String path = ConfigFactory.defaultApplication().getString("remote.actor" +
-//                ".queryUser");
+        String path = ConfigFactory.load().getString("remote.actor" +
+                ".queryUser");
 
         ActorSelection client = system.actorSelection(path);
 
